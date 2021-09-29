@@ -18,7 +18,7 @@
                 <li><a href="{{ route('sis.venda') }}">Vendas Realizadas</a></li>
             </div>
             <div class="caixasmenuhome_inner">
-                <li><a href="{{ route('sis.frentecaixa') }}">Frente de Caixa</a></li>
+                <li><a href="{{ route('frentecaixa.index') }}">Frente de Caixa</a></li>
             </div>
 
         </div>
