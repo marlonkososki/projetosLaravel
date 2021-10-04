@@ -34,7 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($produtos as $produto)F
+                        @foreach ($produtos as $produto)
                             <tr>
                                 <th></th>
                                 <th>

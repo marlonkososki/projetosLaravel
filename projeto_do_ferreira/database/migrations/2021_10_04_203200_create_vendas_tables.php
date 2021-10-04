@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVendasTable extends Migration
+class CreateVendasTables extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('caixa_id');
+            $table->unsignedBigInteger('frente_caixa_id');
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('user_id');
             $table->decimal('desconto', 10, 2);
@@ -25,7 +25,7 @@ class CreateVendasTable extends Migration
             $table->softDeletes();
 
             
-            $table->foreign('caixa_id')->references('id')->on('caixas');
+            $table->foreign('frente_caixa_id')->references('id')->on('frente_caixas');
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->foreign('user_id')->references('id')->on('users');
         });

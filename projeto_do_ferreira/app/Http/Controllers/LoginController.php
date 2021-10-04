@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\FrenteCaixa;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -64,7 +65,15 @@ class LoginController extends Controller
     }
 
     public function sair(){
+
+        $caixas = FrenteCaixa::latest()->first();
+        if ( $caixas->fechamento == null ) {
+            $ldate = date( 'Y-m-d H:i:s' );
+            $caixas->fechamento = $ldate;
+            $caixas->update();
+
         session_destroy();
+        }
         return redirect()->route('sistema.login');
     }
 }
