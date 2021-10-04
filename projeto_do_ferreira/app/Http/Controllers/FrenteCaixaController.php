@@ -32,6 +32,8 @@ class FrenteCaixaController extends Controller
     public function create()
  {
         //
+        
+
     }
 
     /**
