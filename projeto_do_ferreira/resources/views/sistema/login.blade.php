@@ -11,7 +11,7 @@
         </div>
 
         <div class="informacao-pagina">
-            <div class="contato-principal">
+            <div style="width:30%; margin-left: auto; margin-right: auto;">
                 @component('sistema.layouts._components.form_login',['erro' => $erro])
                 @endcomponent
                 

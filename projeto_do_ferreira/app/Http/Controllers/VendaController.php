@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Venda;
+use App\VendaItem;
 use Illuminate\Support\Facades\DB;
 
 class VendaController extends Controller
@@ -26,7 +27,7 @@ class VendaController extends Controller
         
         //print_r($listagem);
 
-        return view('sistema.venda',['listagem' => $listagem]);
+        return view('sistema.modulo_venda.index',['listagem' => $listagem]);
     }
 
     /**
@@ -56,9 +57,20 @@ class VendaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Venda $venda)
     {
-        //
+
+        //print_r($venda);
+
+        $itens = DB::table('venda_itens')
+        ->join('produtos', 'venda_itens.produto_id', '=', 'produtos.id')
+        ->where('venda_itens.venda_id',$venda->id)
+        ->select('venda_itens.venda_id', 'venda_itens.produto_id', 'produtos.descricao', 
+                'venda_itens.quantidade', 'venda_itens.valor_custo', 
+                'venda_itens.valor_venda','venda_itens.valor_venda') 
+        ->get();
+
+        return view( 'sistema.modulo_venda.show', ['itens' => $itens] );
     }
 
     /**

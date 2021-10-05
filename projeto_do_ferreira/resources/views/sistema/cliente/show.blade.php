@@ -13,25 +13,30 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ route('cliente.index') }}">Voltar</a></li>
-                <li><a href="">Consulta</a></li>
             </ul>
         </div>
 
         <div class="informacao-pagina">
-            <div style="width:90%; margin-left: auto; margin-right: auto;">
+            <div style="width:30%; margin-left: auto; margin-right: auto;">
                 <table border="1" width="100%">
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Fone</th>
-                        <th>Endereço</th>
+                        <th>{{ $cliente->id }}</th>
                     </tr>
                     <tr>
-                        <th>{{ $cliente->id }}</th>
+                        <th>Nome</th>
                         <th>{{ $cliente->nome }}</th>
+                    </tr>
+                    <tr>
+                        <th>CPF</th>
                         <th>{{ $cliente->cpf }}</th>
+                    </tr>
+                    <tr>
+                        <th>Fone</th>
                         <th>{{ $cliente->telefone }}</th>
+                    </tr>
+                    <tr>
+                        <th>Endereço</th>
                         <th>{{ $cliente->endereco_completo }}</th>
                     </tr>
                 </table>
