@@ -10,7 +10,7 @@
                 <li><a href="{{ route('produto.index') }}">Novo Produto</a></li>
                 <li><a href="{{ route('cliente.index') }}">Novo Cliente</a></li>
                 <li><a href="{{ route('frentecaixa.index') }}">Frente de Caixa</a></li>
-                <li><a href="{{ route('sis.venda') }}">Vendas Realizadas</a></li>
+                <li><a href="{{ route('venda.index') }}">Vendas Realizadas</a></li>
                 <li><a href="{{ route('sis.sair') }}">Sair</a></li>
             </ul>
         </div>

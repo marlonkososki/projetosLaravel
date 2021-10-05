@@ -23,9 +23,7 @@
                                     <h3>Nº Venda:</h3>
                                 </th>
                                 <th>
-                                    <input name="num_caixa" value="{{ old('num_caixa') }}" type="number"
-                                        class="borda-preta">
-                                    {{ $errors->has('num_caixa') ? $errors->first('num_caixa') : '' }}
+                                    <label>{{$venda_atual->id}}</label>
                                 </th>
                                 <th>
                                     <button type="submit">+</button>

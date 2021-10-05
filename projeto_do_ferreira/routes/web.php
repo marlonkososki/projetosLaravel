@@ -24,9 +24,10 @@ Route::middleware('log.acesso', 'autenticacao')->prefix('/sis')->group(function 
 
 
     Route::resource('/frentecaixa', 'FrenteCaixaController');
+    
 
+    Route::resource('/venda', 'VendaController');
 
-    Route::get('/venda', 'VendaController@principal')->name('sis.venda');
 });
 
 Route::fallback(function () {

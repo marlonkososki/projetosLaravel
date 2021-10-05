@@ -7,31 +7,29 @@ use App\FrenteCaixa;
 use App\User;
 
 class AutenticacaoMiddleware
- {
+{
     /**
-    * Handle an incoming request.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  \Closure  $next
-    * @return mixed
-    */
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
 
-    public function handle( $request, Closure $next )
- {
+    public function handle($request, Closure $next)
+    {
         session_start();
-        if ( isset( $_SESSION['email'] ) && $_SESSION['email'] != '' ) {
+        if (isset($_SESSION['email']) && $_SESSION['email'] != '') {
             //print_r( $_SESSION );
+            $ldate = date('Y-m-d H:i:s');
 
-            $caixas = FrenteCaixa::orderBy( 'fechamento',  'DESC' )->first();
-            if ( isset( $caixas->fechamento ) && $caixas->fechamento != '' ) {
+            $users = User::where('email', $_SESSION['email'])->pluck('id')->all();
 
-                $users = User::where( 'email', $_SESSION['email'] )->pluck( 'id' )
-                ->all();
+            $caixas = FrenteCaixa::orderBy('updated_at',  'DESC')->first();
 
-                $ldate = date( 'Y-m-d H:i:s' );
-                //print_r( $ldate );
+            if ($caixas == null) {
 
-                print_r( $users );
+                print_r($users);
                 $caixa = new FrenteCaixa();
                 $caixa->user_id = $users[0];
                 $caixa->valor_inicial = 0.00;
@@ -40,13 +38,9 @@ class AutenticacaoMiddleware
 
                 $caixa->save();
 
-            } else if($caixas->fechamento == null){
-
-                $users = User::where( 'email', $_SESSION['email'] )->pluck( 'id' )
-                ->all();
-
-                $ldate = date( 'Y-m-d H:i:s' );
-
+            } else if(isset($caixas->fechamento) && $caixas->fechamento != ''){
+               
+                print_r($users);
                 $caixa = new FrenteCaixa();
                 $caixa->user_id = $users[0];
                 $caixa->valor_inicial = 0.00;
@@ -56,9 +50,9 @@ class AutenticacaoMiddleware
                 $caixa->save();
             }
 
-            return $next( $request );
+            return $next($request);
         } else {
-            return redirect()->route( 'sistema.login', ['erro' => 2] );
+            return redirect()->route('sistema.login', ['erro' => 2]);
         }
     }
 }

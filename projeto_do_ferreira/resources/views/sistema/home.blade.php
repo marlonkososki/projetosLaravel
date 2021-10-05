@@ -12,10 +12,10 @@
                 <li><a href="{{ route('produto.index') }}">Produto</a></li>
             </div>
             <div class="caixasmenuhome_inner">
-                <li><a href="{{ route('cliente.index') }}">hahahaha Cliente</a></li>
+                <li><a href="{{ route('cliente.index') }}">Cliente</a></li>
             </div>
             <div class="caixasmenuhome_inner">
-                <li><a href="{{ route('sis.venda') }}">Vendas Realizadas</a></li>
+                <li><a href="{{ route('venda.index') }}">Vendas Realizadas</a></li>
             </div>
             <div class="caixasmenuhome_inner">
                 <li><a href="{{ route('frentecaixa.index') }}">Frente de Caixa</a></li>
