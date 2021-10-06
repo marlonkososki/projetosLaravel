@@ -12,7 +12,7 @@
 
         <div class="menu">
             <ul>
-                <li><a href="{{ route('produto.create')}}">Novo</a></li>
+                <li><a href="{{ route('produto.create') }}">Novo</a></li>
             </ul>
         </div>
 
@@ -39,23 +39,25 @@
                                 <th>{{ $produto->estoque_atual }}</th>
                                 <th>{{ $produto->valor_custo }}</th>
                                 <th>{{ $produto->valor_venda }}</th>
-                                <th><a href="{{ route('produto.show', [ 'produto' => $produto->id])}}">Visualizar</a></th>
-                                <th><a href="{{ route('produto.edit', [ 'produto' => $produto->id])}}">Editar</a></th>
+                                <th><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></th>
+                                <th><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar</a></th>
                                 <th>
-                                <form id="form_{{$produto->id}}" action="{{ route('produto.destroy', ['produto' => $produto->id ])}}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a>
-                                </form>
+                                    <form id="form_{{ $produto->id }}"
+                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}"
+                                        method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <a href="#"
+                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">Excluir</a>
+                                    </form>
                                 </th>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $produtos->appends($request)->links()}}
-                
-{{--                 
-                <br>
+                {{ $produtos->appends($request)->links() }}
+
+                {{-- <br>
                 {{ $produtos->count() }} 
                 <br>
                 {{ $produto->total() }}
@@ -65,7 +67,7 @@
                 {{ $produtos->lastItem() }}
                 <br> --}}
                 <br>
-                Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total()}}
+                Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}
             </div>
         </div>
     </div>

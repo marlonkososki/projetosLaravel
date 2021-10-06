@@ -20,13 +20,12 @@
                             <form action={{ route('frentecaixa.store') }} method="post">
                                 @csrf
                                 <th>
-                                    <h3>Nº Venda:</h3>
                                 </th>
                                 <th>
-                                    <label>{{$venda_atual->id}}</label>
+
+                                    <button type="submit">FECHAR VENDA {{ $venda_atual->id }}</button>
                                 </th>
                                 <th>
-                                    <button type="submit">+</button>
                                 </th>
                             </form>
                         </tr>
@@ -38,8 +37,7 @@
                                 <th>
                                     <form name="form_{{ $produto->id }}" id="form_{{ $produto->id }}">
                                         @csrf
-                                        <button type="submit"
-                                            onclick="onClick({{ $produto->id }})">{{ $produto->descricao }}</a>
+                                        <button onclick="onClick({{ $produto->id }})">{{ $produto->descricao }}</a>
                                     </form>
                                 </th>
                                 <th></th>
@@ -47,7 +45,7 @@
                         @endforeach
                         <tr>
                             <th></th>
-                            <th>{{ $produtos->appends($request)->links() }}</th>
+                            <th>{{ $produtos->links() }}</th>
                             <th></th>
                         </tr>
                     </tbody>
@@ -58,14 +56,15 @@
     </div>
     <script>
         function onClick(id) {
-            $(function() {
-                var a = 'form_' + id;
-                ///alert(a);
-                $('form[name="' + a + '"]').submit(function(event) {
-                    event.preventDefault();
-                    alert(a);
-                });
-            });
+            event.preventDefault();
+            debugger
+            var a = 'form_' + id;
+            alert(a);
+            debugger
+            // $('form[name="' + a + '"]').submit(function(event) {
+            //     event.preventDefault();
+            //     alert(a);
+            // });
         }
     </script>
 @endsection

@@ -19,7 +19,7 @@ class ProdutoController extends Controller
 
         $produtos = Produto::where( 'descricao', 'like', '%' . $request->input( 'descricao' ) . '%' )
         ->where( 'codigo_barra', 'like', '%' . $request->input( 'codigo_barra' ) . '%' )
-        ->paginate( 10 );
+        ->paginate( 5 );
 
         return view( 'sistema.produto.index', ['titulo' => 'Produto - Listar', 'produtos' => $produtos, 'request' => $request->all()] );
     }
@@ -96,6 +96,19 @@ class ProdutoController extends Controller
         return view( 'sistema.produto.show', ['produto' => $produto] );
     }
 
+    /**
+    * Display the specified resource.
+    *
+    * @param  string  $codigobarra
+    * @return Produto
+    */
+
+    public function getProdutoCodigoBarra( $codigobarra )
+ {
+        return  $produto = Produto::where( 'codigo_barra', $codigobarra );
+
+    } 
+    
     /**
     * Show the form for editing the specified resource.
     *

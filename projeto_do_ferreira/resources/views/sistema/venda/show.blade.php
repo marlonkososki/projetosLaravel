@@ -7,7 +7,7 @@
 
     <div class="conteudo-pagina">
         <div class="titulo-pagina-2">
-            <h1>Venda - {{ $itens->venda_id }}</h1>
+            <h1>Venda - {{ $idvenda}}</h1>
         </div>
 
         <div class="menu">
@@ -20,9 +20,9 @@
             <div style="width:90%; margin-left: auto; margin-right: auto;">
                 <table border="1" width="100%">
                     <thead>
-                        <tr>
-                            <th>Item</th>
+                        <tr> 
                             <th>Produto</th>
+                            <th>Codigo Barras</th>
                             <th>Quantidade</th>
                             <th>Valor de Custo</th>
                             <th>Valor de Venda</th>
@@ -30,14 +30,18 @@
                     </thead>
                     <tbody>
                         @foreach ($itens as $item)
-                            <tr>
-                                <th>{{ $item->id }}</th>
-                                <th>{{ $item->produto_id }}</th>
+                            <tr> 
+                                <th>{{ $item->descricao }}</th>
+                                <th>{{ $item->codigo_barra }}</th>
                                 <th>{{ $item->quantidade }}</th>
                                 <th>{{ $item->valor_custo }}</th>
                                 <th>{{ $item->valor_venda }}</th>
                             </tr>
                         @endforeach
+                        <tr> 
+                            <th>TOTAL</th>
+                            <th>{{ $total }}</th>
+                        </tr>
                     </tbody>
                 </table>
             </div>

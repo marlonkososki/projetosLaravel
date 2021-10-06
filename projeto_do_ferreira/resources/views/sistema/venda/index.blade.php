@@ -31,7 +31,7 @@
                         @foreach ($listagem as $list)
                             <tr>
                                 <th>{{ $list->id }}</th>
-                                <th>{{ $list->frente_caixa_id }}</th>
+                                <th>{{ $list->caixa_id }}</th>
                                 <th>{{ $list->nome }}</th>
                                 <th>{{ $list->name }}</th>
                                 <th>{{ $list->desconto }}</th>

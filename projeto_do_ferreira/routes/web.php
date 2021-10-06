@@ -23,6 +23,9 @@ Route::middleware('log.acesso', 'autenticacao')->prefix('/sis')->group(function 
     Route::resource('/cliente', 'ClienteController');
 
 
+    Route::resource('/caixa', 'CaixaController');
+
+
     Route::resource('/frentecaixa', 'FrenteCaixaController');
     
 
