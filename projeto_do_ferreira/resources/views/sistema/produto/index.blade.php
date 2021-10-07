@@ -4,60 +4,60 @@
 
 @section('conteudo')
 
-
-    <div class="conteudo-pagina">
-        <div class="titulo-pagina-2">
-            <h1>Produto - Listar</h1>
-        </div>
-
-        <div class="menu">
-            <ul>
-                <li><a href="{{ route('produto.create') }}">Novo</a></li>
+    <main>
+        <div class="container px-3  py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Produto</font>
+                </font>
+            </h2>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ route('produto.create') }}" class="nav-link">Novo</a></li>
             </ul>
-        </div>
 
-        <div class="informacao-pagina">
-            <div style="width:90%; margin-left: auto; margin-right: auto;">
-                <table border="1" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Código de barras</th>
-                            <th>Estoque Atual</th>
-                            <th>Vl Custo</th>
-                            <th>Vl Venda</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($produtos as $produto)
+            <div class="informacao-pagina">
+                <div style="width:90%; margin-left: auto; margin-right: auto;">
+                    <table border="1" width="100%">
+                        <thead>
                             <tr>
-                                <th>{{ $produto->descricao }}</th>
-                                <th>{{ $produto->codigo_barra }}</th>
-                                <th>{{ $produto->estoque_atual }}</th>
-                                <th>{{ $produto->valor_custo }}</th>
-                                <th>{{ $produto->valor_venda }}</th>
-                                <th><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></th>
-                                <th><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar</a></th>
-                                <th>
-                                    <form id="form_{{ $produto->id }}"
-                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}"
-                                        method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <a href="#"
-                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">Excluir</a>
-                                    </form>
-                                </th>
+                                <th>Descrição</th>
+                                <th>Código de barras</th>
+                                <th>Estoque Atual</th>
+                                <th>Vl Custo</th>
+                                <th>Vl Venda</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{ $produtos->appends($request)->links() }}
+                        </thead>
+                        <tbody>
+                            @foreach ($produtos as $produto)
+                                <tr>
+                                    <th>{{ $produto->descricao }}</th>
+                                    <th>{{ $produto->codigo_barra }}</th>
+                                    <th>{{ $produto->estoque_atual }}</th>
+                                    <th>{{ $produto->valor_custo }}</th>
+                                    <th>{{ $produto->valor_venda }}</th>
+                                    <th><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a>
+                                    </th>
+                                    <th><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar</a></th>
+                                    <th>
+                                        <form id="form_{{ $produto->id }}"
+                                            action="{{ route('produto.destroy', ['produto' => $produto->id]) }}"
+                                            method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="#"
+                                                onclick="document.getElementById('form_{{ $produto->id }}').submit()">Excluir</a>
+                                        </form>
+                                    </th>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $produtos->appends($request)->links() }}
 
-                {{-- <br>
+                    {{-- <br>
                 {{ $produtos->count() }} 
                 <br>
                 {{ $produto->total() }}
@@ -66,9 +66,10 @@
                 <br>
                 {{ $produtos->lastItem() }}
                 <br> --}}
-                <br>
-                Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}
+                    <br>
+                    Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 @endsection

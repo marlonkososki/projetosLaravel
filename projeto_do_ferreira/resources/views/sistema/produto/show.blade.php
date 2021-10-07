@@ -5,16 +5,16 @@
 @section('conteudo')
 
 
-    <div class="conteudo-pagina">
-        <div class="titulo-pagina-2">
-            <h1>Produto - Visualizar</h1>
-        </div>
-
-        <div class="menu">
-            <ul>
-                <li><a href="{{ route('produto.index') }}">Voltar</a></li>
+    <main>
+        <div class="container px-3  py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Produto</font>
+                </font>
+            </h2>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ route('produto.index') }}" class="nav-link">Voltar</a></li>
             </ul>
-        </div>
 
         <div class="informacao-pagina">
             <div style="width:30%; margin-left: auto; margin-right: auto;">

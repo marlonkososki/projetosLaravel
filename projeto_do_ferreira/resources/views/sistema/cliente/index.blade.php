@@ -5,16 +5,16 @@
 @section('conteudo')
 
 
-    <div class="conteudo-pagina">
-        <div class="titulo-pagina-2">
-            <h1>Cliente - Listar</h1>
-        </div>
-
-        <div class="menu">
-            <ul>
-                <li><a href="{{ route('cliente.create') }}">Novo</a></li>
+    <main>
+        <div class="container px-3  py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Cliente</font>
+                </font>
+            </h2>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ route('cliente.create') }}" class="nav-link">Novo</a></li>
             </ul>
-        </div>
 
         <div class="informacao-pagina">
             <div style="width:90%; margin-left: auto; margin-right: auto;">

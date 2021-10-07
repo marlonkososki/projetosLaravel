@@ -1,21 +1,28 @@
-@extends('sistema.layouts.basico')
+@extends('sistema.layouts.basico_home')
 
 @section('titulo', $titulo)
 
 @section('conteudo')
 
 
-    <div class="conteudo-pagina">
-        <div class="titulo-pagina">
-            <h1>Faça seu login!</h1>
-        </div>
-
-        <div class="informacao-pagina">
-            <div style="width:30%; margin-left: auto; margin-right: auto;">
-                @component('sistema.layouts._components.form_login',['erro' => $erro])
-                @endcomponent
-                
+    <main>
+        <div class="container px-3  py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Login</font>
+                </font>
+            </h2>
+            <div class="informacao-pagina">
+                <div style="width:30%; margin-left: auto; margin-right: auto;">
+                    @component('sistema.layouts._components.form_login', ['erro' => $erro])
+                    @endcomponent
+                </div>
             </div>
         </div>
+    </main>
+    <h1>Faça seu login!</h1>
+    </div>
+
+
     </div>
 @endsection

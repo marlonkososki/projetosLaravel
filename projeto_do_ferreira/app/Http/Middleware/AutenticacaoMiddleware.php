@@ -20,7 +20,7 @@ class AutenticacaoMiddleware
  {
         session_start();
         if ( isset( $_SESSION['email'] ) && $_SESSION['email'] != '' ) {
-            print_r($_SESSION);
+          //  print_r($_SESSION);
             
             return $next( $request );
         } else {
