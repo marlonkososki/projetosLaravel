@@ -55,19 +55,20 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <br>
                     {{ $produtos->appends($request)->links() }}
 
-                    {{-- <br>
-                {{ $produtos->count() }} 
-                <br>
-                {{ $produto->total() }}
-                <br>
-                {{ $produtos->firstItem() }}
-                <br>
-                {{ $produtos->lastItem() }}
-                <br> --}}
+                            {{-- <br>
+                        {{ $produtos->count() }} 
+                        <br>
+                        {{ $produto->total() }}
+                        <br>
+                        {{ $produtos->firstItem() }}
+                        <br>
+                        {{ $produtos->lastItem() }}
+                        <br> --}}
                     <br>
-                    Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}
+                    Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}.
                 </div>
             </div>
         </div>

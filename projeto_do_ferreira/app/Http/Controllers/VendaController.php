@@ -26,7 +26,7 @@ class VendaController extends Controller
         ->join( 'users', 'users.id', '=', 'caixas.user_id' )
         ->whereNotNull( 'vendas.updated_at' )
         ->select( 'vendas.id', 'vendas.caixa_id', 'clientes.nome', 'users.name', 'vendas.desconto', 'vendas.acrescimo', 'vendas.total', 'vendas.updated_at' )
-        ->get();
+        ->paginate( 5 );
 
         //print_r( $listagem );
 

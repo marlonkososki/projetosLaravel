@@ -54,7 +54,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- {{ $vendas->appends($request)->links() }}
+                    {{ $listagem->links() }}
+                    <br>
+                    Exibindo {{ $listagem->count() }} vendas de {{ $listagem->total() }}.
 
                 {{-- <br>
                 {{ $clientes->count() }} 

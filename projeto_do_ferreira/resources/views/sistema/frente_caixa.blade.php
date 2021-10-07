@@ -4,67 +4,90 @@
 
 @section('conteudo')
 
-
-
-    <div class="conteudo-destaque">
-
-        <div class="esquerda">
-            {{-- LISTA DE PRODUTOS ADICIONADOS NA VENDA --}}
-        </div>
-
-        <div class="direita">
-            <div style="width:90%; margin-left: auto; margin-right: auto;">
-                <table width="100%" style="margin-top: 100px;">
-                    <thead>
-                        <tr>
+    <main class="mw-100 mh-100">
+        <div class="container mw-100 mh-100 align-items-stretch g-5 py-3 d-inline-block">
+            <div class="row">
+                <div class="col w-75 p-3 bg-secondary">
+                    <h2 class="pb-2 border-bottom">
+                        <font style="vertical-align: inherit;">
+                            <span style="vertical-align: inherit;" class="text-white" id="labelDescricao">Frente de
+                                Caixa</span>
+                        </font>
+                    </h2>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;" class="text-white-50">
+                            <span style="vertical-align: inherit;" class="text-white" id="labelProdutoLista"></span>
+                        </font>
+                    </font>
+                </div>
+                <div class="direita w-25 p-3 bg-dark">
+                    <div class="container py-2">
+                        <div class="row py-3">
                             <form action={{ route('frentecaixa.store') }} method="post">
                                 @csrf
-                                <th>
-                                </th>
-                                <th>
-
-                                    <button type="submit">FECHAR VENDA {{ $venda_atual->id }}</button>
-                                </th>
-                                <th>
-                                </th>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success">FECHAR VENDA
+                                        {{ $venda_atual->id }}</button>
+                                </div>
                             </form>
-                        </tr>
-                    </thead>
-                    <tbody>
+                        </div>
                         @foreach ($produtos as $produto)
-                            <tr>
-                                <th></th>
-                                <th>
+                            <div class="row py-1">
+                                <div class="col">
                                     <form name="form_{{ $produto->id }}" id="form_{{ $produto->id }}">
                                         @csrf
-                                        <button onclick="onClick({{ $produto->id }})">{{ $produto->descricao }}</a>
+                                        <button onclick="onClick({{ $produto->id }})" class="btn btn-primary"
+                                            id="btn_{{ $produto->id }}"
+                                            value="{{ $produto->descricao }}">{{ $produto->descricao }}</a>
                                     </form>
-                                </th>
-                                <th></th>
-                            </tr>
+                                </div>
+                            </div>
                         @endforeach
-                        <tr>
-                            <th></th>
-                            <th>{{ $produtos->links() }}</th>
-                            <th></th>
-                        </tr>
-                    </tbody>
-                </table>
+                        <div class="row py-2">
+                            <div class="col">
+                                {{ $produtos->links() }}
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     <script>
+        var listaProd = [];
+
         function onClick(id) {
             event.preventDefault();
-            debugger
             var a = 'form_' + id;
-            alert(a);
-            debugger
-            // $('form[name="' + a + '"]').submit(function(event) {
-            //     event.preventDefault();
-            //     alert(a);
+
+            var labelDescricao = $('form[name="' + a + '"]').find('button#btn_' + id).val();
+            listaProd.push(labelDescricao);
+            console.log(listaProd);
+            // debugger
+
+            $('#labelDescricao').text(labelDescricao);
+            // debugger
+            // listaProd.forEach(element => {
+            //     $('#labelProdutoLista').text(labelProdutoLista);
             // });
+
+            $('#labelProdutoLista').text($.each(listaProd, function(index, value) {
+                console.log(index + ' : ' + value);
+            }))
+
+
+
+
+
+            // $(a).find('input#btn_' + id).val();
+
+            //alert(email);
+            // debugger
+            // // $('form[name="' + a + '"]').submit(function(event) {
+            // //     event.preventDefault();
+            // //     alert(a);
+            // // });
         }
     </script>
 @endsection

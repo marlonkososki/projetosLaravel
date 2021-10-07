@@ -53,6 +53,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                <br>
                 {{ $clientes->appends($request)->links() }}
 
                 {{-- <br>
@@ -65,7 +66,7 @@
                 {{ $clientes->lastItem() }}
                 <br> --}}
                 <br>
-                Exibindo {{ $clientes->count() }} clientes de {{ $clientes->total() }}
+                Exibindo {{ $clientes->count() }} clientes de {{ $clientes->total() }}.
             </div>
         </div>
     </div>
