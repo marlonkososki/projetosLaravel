@@ -1,4 +1,4 @@
-<footer class="footer navbar-fixed-bottom py-3 bg-dark">
+<footer class="fixed-bottom py-2 bg-dark">
     <div class="container">
         <div class="row">
             <div class="col">

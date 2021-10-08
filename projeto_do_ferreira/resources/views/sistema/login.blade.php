@@ -6,7 +6,7 @@
 
 
     <main>
-        <div class="container px-3  py-5" id="custom-cards">
+        <div class="container px-3  py-0" id="custom-cards">
             <h2 class="pb-2 border-bottom">
                 <font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">Login</font>
@@ -20,9 +20,4 @@
             </div>
         </div>
     </main>
-    <h1>Faça seu login!</h1>
-    </div>
-
-
-    </div>
 @endsection

@@ -16,7 +16,7 @@
                     </h2>
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;" class="text-white-50">
-                            <span style="vertical-align: inherit;" class="text-white" id="labelProdutoLista"></span>
+                            <span style="vertical-align: inherit;" class="text-white" id="labelProdutoLista">teste</span>
                         </font>
                     </font>
                 </div>
@@ -38,7 +38,7 @@
                                         @csrf
                                         <button onclick="onClick({{ $produto->id }})" class="btn btn-primary"
                                             id="btn_{{ $produto->id }}"
-                                            value="{{ $produto->descricao }}">{{ $produto->descricao }}</a>
+                                            value="{{ $produto }}">{{ $produto->descricao }}</a>
                                     </form>
                                 </div>
                             </div>
@@ -55,39 +55,73 @@
         </div>
     </main>
     <script>
-        var listaProd = [];
+        let produtos = [];
 
         function onClick(id) {
             event.preventDefault();
+
+            var produto = new Object();
             var a = 'form_' + id;
 
+
             var labelDescricao = $('form[name="' + a + '"]').find('button#btn_' + id).val();
-            listaProd.push(labelDescricao);
-            console.log(listaProd);
-            // debugger
 
-            $('#labelDescricao').text(labelDescricao);
-            // debugger
-            // listaProd.forEach(element => {
-            //     $('#labelProdutoLista').text(labelProdutoLista);
-            // });
+            labelDescricao = labelDescricao.replace(/['"]+/g, '').replace('{', '').replace('}', '');
 
-            $('#labelProdutoLista').text($.each(listaProd, function(index, value) {
-                console.log(index + ' : ' + value);
-            }))
+            var array = labelDescricao.split(",");
+            var teste = [];
 
+            for (var i = 0; i < array.length; i++) {
 
+                teste.push(array[i].split(":"));
+            }
 
+            for (var i = 0; i < teste.length; i++) {
 
+                //debugger;
+                switch (teste[i][0]) {
 
-            // $(a).find('input#btn_' + id).val();
+                    case 'id':
+                        produto.id = teste[i][1];
+                        break;
+                    case 'descricao':
+                        produto.descricao = teste[i][1];
+                        break;
+                    case 'codigo_barra':
+                        produto.codigo_barra = teste[i][1];
+                        break;
+                    case 'estoque_atual':
+                        produto.estoque_atual = teste[i][1];
+                        break;
+                    case 'valor_custo':
+                        produto.valor_custo = teste[i][1];
+                        break;
+                    case 'valor_venda':
+                        produto.valor_venda = teste[i][1];
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-            //alert(email);
-            // debugger
-            // // $('form[name="' + a + '"]').submit(function(event) {
-            // //     event.preventDefault();
-            // //     alert(a);
-            // // });
+            $('#labelDescricao').text(produto.descricao);
+            
+            produtos.push(produto);
+
+            var print = '';
+            for (var i = 0; i < produtos.length; i++) {
+                print += '<span style="vertical-align: inherit;" class="text-white">' +
+                    produtos[i].id + ' ' +
+                    produtos[i].descricao + ' ' +
+                    produtos[i].codigo_barra + ' ' +
+                    produtos[i].estoque_atual + ' ' +
+                    produtos[i].valor_custo + ' ' +
+                    produtos[i].valor_venda +
+                    '</span><br>';
+            }
+
+            $('#labelProdutoLista').html(print);
+
         }
     </script>
 @endsection
