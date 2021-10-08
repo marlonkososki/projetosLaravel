@@ -17,7 +17,7 @@ class FrenteCaixaController extends Controller {
     */
 
     public function index() {
-        $produtos = Produto::paginate( 5 );
+        $produtos = Produto::get();
 
         $cliente = Cliente::find( 1 )->get();
 
